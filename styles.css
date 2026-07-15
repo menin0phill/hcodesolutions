@@ -1145,6 +1145,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
+  /* Global adjustments */
+  .section {
+    padding: 4.5rem 0;
+  }
+  
+  .body-large {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+  
+  .lead-text {
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+  }
+  
   #navbar {
     display: none;
   }
@@ -1164,14 +1179,16 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-8px) rotate(-45deg);
   }
   
+  /* Hero Section Mobile */
   .hero-section {
-    padding-top: 120px;
-    padding-bottom: 40px;
+    padding-top: 100px;
+    padding-bottom: 30px;
+    min-height: auto;
   }
   
   .hero-container {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
     text-align: center;
   }
 
@@ -1180,28 +1197,68 @@ h1, h2, h3, h4, h5, h6 {
     flex-direction: column;
     align-items: center;
   }
+  
+  .hero-content h1 {
+    font-size: 2.3rem;
+    margin-bottom: 1rem;
+  }
 
+  /* Compact Logo Visual Container on Mobile (no HUD clutter) */
   .hero-visual {
-    height: 350px;
-    order: -1; /* Place 3D logo above text on mobile */
+    height: 240px;
+    order: -1; /* Logo above text */
+    border: none;
+    background: transparent;
+    backdrop-filter: none;
+    padding: 0;
+    overflow: visible;
+  }
+  
+  .hud-tag, .hud-corner {
+    display: none; /* Hide HUD tags/borders to prevent text clashing on small screens */
+  }
+  
+  .glow-logo-wrapper {
+    width: 160px;
+    height: 160px;
   }
   
   .hero-actions {
     flex-direction: column;
     width: 100%;
+    gap: 1rem;
   }
   
   .hero-actions .btn {
     width: 100%;
   }
   
+  /* Projects Section Mobile */
+  .projects-grid {
+    gap: 2rem;
+  }
+  
+  .project-image-container {
+    height: 200px; /* shorter visual container */
+  }
+  
+  /* Contact Section Mobile */
   .contact-box {
-    padding: 2.5rem 1.5rem;
+    padding: 2.5rem 1.25rem;
+    border-radius: 16px;
+  }
+  
+  .contact-header h2 {
+    font-size: 1.8rem;
+  }
+  
+  .contact-form {
+    gap: 1.75rem;
   }
   
   .form-row {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 1.75rem;
   }
   
   .footer-container {
