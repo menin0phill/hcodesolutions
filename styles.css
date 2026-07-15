@@ -756,42 +756,57 @@ h1, h2, h3, h4, h5, h6 {
   100% { transform: translateY(-6px); }
 }
 
-/* Project 2 preview */
+/* Project 2 preview (Wedding List - Double Ring Theme) */
 .p2-preview {
   background: linear-gradient(45deg, rgba(140, 107, 63, 0.05) 0%, rgba(0,0,0,0) 100%);
 }
 
-.p2-preview .floating-bars {
+.p2-preview .floating-rings {
   display: flex;
-  align-items: flex-end;
-  gap: 8px;
-  height: 60px;
-}
-
-.p2-preview .floating-bars::before,
-.p2-preview .floating-bars::after,
-.p2-preview .floating-bars {
-  content: '';
-}
-
-.p2-preview .floating-bars {
+  align-items: center;
+  justify-content: center;
   position: relative;
+  width: 80px;
+  height: 60px;
+  animation: rings-float 4s ease-in-out infinite alternate;
+  z-index: 2;
 }
 
-.p2-preview .floating-bars::before {
-  width: 12px;
-  height: 30px;
-  background: rgba(197, 160, 89, 0.2);
-  border: 1px solid var(--border-gold);
-  animation: float-bar 2s infinite ease-in-out alternate;
+.p2-preview .ring {
+  width: 38px;
+  height: 38px;
+  border: 1.5px solid var(--color-gold);
+  border-radius: 50%;
+  position: absolute;
+  background: transparent;
+  box-shadow: 0 0 15px rgba(197, 160, 89, 0.15);
 }
 
-.p2-preview .floating-bars::after {
-  width: 12px;
-  height: 50px;
-  background: rgba(197, 160, 89, 0.4);
-  border: 1px solid var(--color-gold);
-  animation: float-bar-delayed 2s infinite ease-in-out alternate;
+.p2-preview .ring-left {
+  left: 8px;
+}
+
+.p2-preview .ring-right {
+  right: 8px;
+  transform: scale(0.85) translateY(4px);
+}
+
+.p2-preview .grid-lines {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+@keyframes rings-float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-7px); }
 }
 
 .project-tag {
