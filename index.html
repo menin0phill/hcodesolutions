@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | High Performance Developer</title>
+  <meta name="description" content="Portfolio de alta performance com design estético, desenvolvimento moderno e interfaces interativas em 3D.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="logo.svg">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css?v=4">
+  
+  <!-- Three.js & GSAP via CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+  
+  
+  
+  <!-- Custom Cursor Glow -->
+  <div id="cursor-glow"></div>
+  
+  <!-- Header / Navigation -->
+  <header id="main-header">
+    <div class="container header-container">
+      <a href="#hero" class="logo-container" id="logo-link">
+        <img src="logo.svg" alt="Logo" class="nav-logo" id="nav-logo-img">
+        <span class="logo-text">H-CODE</span>
+      </a>
+      <nav id="navbar">
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link" id="nav-about-link">Sobre</a></li>
+          <li><a href="#projects" class="nav-link" id="nav-projects-link">Projetos</a></li>
+          <li><a href="#skills" class="nav-link" id="nav-skills-link">Tech Stack</a></li>
+          <li><a href="#contact" class="nav-btn" id="nav-contact-btn">Contato</a></li>
+        </ul>
+      </nav>
+      <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Abrir menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Overlay -->
+  <div id="mobile-menu" class="mobile-menu-overlay">
+    <ul class="mobile-nav-links">
+      <li><a href="#about" class="mobile-nav-link" id="mob-about-link">Sobre</a></li>
+      <li><a href="#projects" class="mobile-nav-link" id="mob-projects-link">Projetos</a></li>
+      <li><a href="#skills" class="mobile-nav-link" id="mob-skills-link">Tech Stack</a></li>
+      <li><a href="#contact" class="mobile-nav-btn" id="mob-contact-btn">Contato</a></li>
+    </ul>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-badge" id="hero-badge-elem">
+            <span class="badge-dot"></span>
+            Disponível para novos projetos
+          </div>
+          <h1 id="hero-title" class="glitch-text">
+            Construindo <br>
+            <span class="text-gradient">Interfaces de Alta</span> <br>
+            Performance.
+          </h1>
+          <p id="hero-description" class="lead-text">
+            Engenharia de software de ponta com estética minimalista e interações fluidas que elevam a experiência digital ao próximo nível.
+          </p>
+          <div class="hero-actions" id="hero-actions-container">
+            <a href="#projects" class="btn btn-primary" id="hero-projects-btn">Ver Projetos</a>
+            <a href="#about" class="btn btn-secondary" id="hero-about-btn">Conhecer Mais</a>
+          </div>
+        </div>
+        <div class="hero-visual" id="hero-visual-container">
+          <!-- Interactive 2D Constellation Canvas -->
+          <canvas id="hero-canvas"></canvas>
+
+          <!-- Ambient Tech HUD elements -->
+          <div class="hud-tag hud-tl">[ SYS_GRAPH_v1.09 ]</div>
+          <div class="hud-tag hud-tr">LATENCY // 0.03ms</div>
+          <div class="hud-tag hud-bl">FPS // 60.0</div>
+          <div class="hud-tag hud-br">STATUS // ACTIVE</div>
+          <div class="hud-corner hud-c-tl"></div>
+          <div class="hud-corner hud-c-tr"></div>
+          <div class="hud-corner hud-c-bl"></div>
+          <div class="hud-corner hud-c-br"></div>
+          
+          <!-- Glowing SVG Logo -->
+          <div class="glow-logo-wrapper">
+            <img src="logo.svg" alt="Logo" class="glow-logo">
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator-container">
+        <div class="scroll-indicator" id="scroll-indicator-icon">
+          <div class="scroll-dot"></div>
+        </div>
+        <span class="scroll-text">Role para explorar</span>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section">
+      <div class="container">
+        <div class="section-grid">
+          <div class="section-info">
+            <span class="section-subtitle">01 / FILOSOFIA</span>
+            <h2 class="section-title">Código Veloz, Design Impecável.</h2>
+          </div>
+          <div class="section-body">
+            <p class="body-large">
+              Acredito que a velocidade de carregamento e a fluidez das animações não são apenas métricas técnicas, mas sim pilares fundamentais da experiência do usuário. 
+            </p>
+            <p>
+              Desenvolvo aplicações web focadas em alto desempenho, otimização de renderização e animações 3D interativas. Utilizo as tecnologias mais modernas do ecossistema web para transformar conceitos complexos em interfaces leves, rápidas e esteticamente deslumbrantes.
+            </p>
+            <div class="philosophy-cards">
+              <div class="p-card">
+                <span class="p-card-icon">⚡</span>
+                <h3>Velocidade Extrema</h3>
+                <p>Otimização de performance com carregamento instantâneo e taxa de quadros estável (60 FPS).</p>
+              </div>
+              <div class="p-card">
+                <span class="p-card-icon">📐</span>
+                <h3>Arquitetura Limpa</h3>
+                <p>Código modular, legível e escalável, pronto para o crescimento do seu produto.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-subtitle">02 / PORTFOLIO</span>
+            <h2 class="section-title">Projetos Selecionados</h2>
+          </div>
+          <p class="section-description">
+            Uma seleção de trabalhos recentes que demonstram o compromisso com a excelência técnica e o refinamento visual.
+          </p>
+        </div>
+        
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="project-card" id="project-card-1">
+            <div class="project-image-container">
+              <div class="project-image-glow" style="background: radial-gradient(circle, rgba(197, 160, 89, 0.15) 0%, transparent 70%);"></div>
+              <div class="project-visual-preview p1-preview">
+                <div class="floating-shield"></div>
+                <div class="grid-lines"></div>
+              </div>
+              <span class="project-tag">Landing Page / UX Design</span>
+            </div>
+            <div class="project-content">
+              <h3>Interunião Seguros</h3>
+              <p>Landing page corporativa de alta performance desenvolvida para a corretora Interunião Seguros, focada em captação de novos clientes (lead generation) e conversão.</p>
+              <a href="http://interuniaoseguros.com.br" target="_blank" rel="noopener" class="project-link" id="project-1-link">Acessar Site Live <span class="arrow">→</span></a>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card" id="project-card-2">
+            <div class="project-image-container">
+              <div class="project-image-glow" style="background: radial-gradient(circle, rgba(140, 107, 63, 0.15) 0%, transparent 70%);"></div>
+              <div class="project-visual-preview p2-preview">
+                <div class="floating-bars"></div>
+              </div>
+              <span class="project-tag">SaaS / WebGL</span>
+            </div>
+            <div class="project-content">
+              <h3>Optima Dashboard</h3>
+              <p>Painel analítico corporativo de alta performance capaz de renderizar mais de 100k pontos de dados em tempo real.</p>
+              <a href="#" class="project-link" id="project-2-link">Ver Caso de Estudo <span class="arrow">→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-grid">
+          <div class="section-info">
+            <span class="section-subtitle">03 / CAPACIDADES</span>
+            <h2 class="section-title">Tecnologias & Ferramentas</h2>
+            <p>
+              O ecossistema que utilizo diariamente para criar experiências interativas rápidas e modernas.
+            </p>
+          </div>
+          <div class="section-body">
+            <div class="skills-grid">
+              <div class="skill-category">
+                <h3>Frontend</h3>
+                <ul class="skill-list">
+                  <li>JavaScript (ES6+)</li>
+                  <li>TypeScript</li>
+                  <li>React / Next.js</li>
+                  <li>HTML5 / CSS3 Avançado</li>
+                </ul>
+              </div>
+              <div class="skill-category">
+                <h3>Creative Coding</h3>
+                <ul class="skill-list">
+                  <li>Three.js / WebGL</li>
+                  <li>GLSL Shaders</li>
+                  <li>GSAP (GreenSock)</li>
+                  <li>Canvas API</li>
+                </ul>
+              </div>
+              <div class="skill-category">
+                <h3>Performance</h3>
+                <ul class="skill-list">
+                  <li>Otimização de Web Vitals</li>
+                  <li>Lazy Loading / Caching</li>
+                  <li>Build Otimizados</li>
+                  <li>Vite / Rollup</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+      <div class="container">
+        <div class="contact-box">
+          <div class="contact-header">
+            <span class="section-subtitle">04 / CONTATO</span>
+            <h2>Vamos Acelerar Seu Projeto?</h2>
+            <p>Tem uma ideia incrível ou precisa de um desenvolvedor de alto desempenho? Entre em contato para conversarmos.</p>
+          </div>
+          
+          <form id="contact-form" class="contact-form" onsubmit="event.preventDefault();">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="form-name">Nome</label>
+                <input type="text" id="form-name" placeholder="Seu nome" required>
+                <span class="input-line"></span>
+              </div>
+              <div class="form-group">
+                <label for="form-email">E-mail</label>
+                <input type="email" id="form-email" placeholder="seu@email.com" required>
+                <span class="input-line"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="form-message">Mensagem</label>
+              <textarea id="form-message" rows="5" placeholder="Fale um pouco sobre o projeto..." required></textarea>
+              <span class="input-line"></span>
+            </div>
+            <button type="submit" class="btn btn-primary" id="form-submit-btn">
+              <span>Enviar Mensagem</span>
+              <svg class="btn-arrow" viewBox="0 0 24 24" width="16" height="16">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
+            </button>
+            <div id="form-feedback" class="form-feedback"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer id="main-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <img src="logo.svg" alt="Logo" class="footer-logo">
+        <span>© 2026 H-code Solutions. Todos os direitos reservados.</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com" target="_blank" rel="noopener" id="footer-github">GitHub</a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" id="footer-linkedin">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

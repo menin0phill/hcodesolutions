@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <!-- Symmetrical Metallic Gold/Bronze Gradient -->
+    <linearGradient id="gold-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8C6B3F" />
+      <stop offset="30%" stop-color="#C5A059" />
+      <stop offset="70%" stop-color="#E8C78C" />
+      <stop offset="100%" stop-color="#B38F4F" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Left Chevron with circular cut-out -->
+  <path d="M 42,26 L 34,26 L 18,50 L 34,74 L 42,74 L 42,62 A 14.42,14.42 0 0,1 42,38 L 42,26 Z" fill="url(#gold-gradient)" />
+  
+  <!-- Right Chevron with circular cut-out -->
+  <path d="M 58,26 L 66,26 L 82,50 L 66,74 L 58,74 L 58,62 A 14.42,14.42 0 0,0 58,38 L 58,26 Z" fill="url(#gold-gradient)" />
+  
+  <!-- Speedometer Arc centered at (50, 50) -->
+  <path d="M 38.5,50 A 11.5,11.5 0 0,1 61.5,50 L 58.5,50 A 8.5,8.5 0 0,0 41.5,50 Z" fill="url(#gold-gradient)" />
+  
+  <!-- Speedometer Needle -->
+  <!-- Needle center pivot pin -->
+  <circle cx="50" cy="50" r="2.0" fill="url(#gold-gradient)" />
+  <!-- Needle pointer pointing at 45 degrees -->
+  <path d="M 49.2,50.8 L 58.5,41.5 L 57.5,40.5 L 50.8,49.2 Z" fill="url(#gold-gradient)" />
+</svg>
