@@ -230,14 +230,32 @@ document.addEventListener('DOMContentLoaded', () => {
             const force = (90 - dist) / 1100;
             this.vx -= (dx / dist) * force;
             this.vy -= (dy / dist) * force;
-            
-            // Limit speed to prevent chaotic acceleration
-            const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-            if (speed > 1.2) {
-              this.vx = (this.vx / speed) * 1.2;
-              this.vy = (this.vy / speed) * 1.2;
-            }
           }
+        }
+
+        // Center Attraction pull on scroll (Implosion effect)
+        if (window.scrollY > 0) {
+          const maxPullDist = 400;
+          const scrollProgress = Math.min(window.scrollY / maxPullDist, 1.0);
+          const centerX = width / 2;
+          const centerY = height / 2;
+          const dx = centerX - this.x;
+          const dy = centerY - this.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          
+          if (dist > 10) {
+            const pullForce = scrollProgress * 0.006;
+            this.vx += (dx / dist) * pullForce;
+            this.vy += (dy / dist) * pullForce;
+          }
+        }
+        
+        // Limit speed to prevent chaotic acceleration
+        const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+        const maxSpeed = window.scrollY > 0 ? 2.2 : 1.2;
+        if (speed > maxSpeed) {
+          this.vx = (this.vx / speed) * maxSpeed;
+          this.vy = (this.vy / speed) * maxSpeed;
         }
       }
       
@@ -307,5 +325,73 @@ document.addEventListener('DOMContentLoaded', () => {
     
     animate();
   }
+
+  // --- 8. Scroll-Linked Hero Transition (Kenta Toshikura style) ---
+  const heroVisualContainer = document.getElementById('hero-visual-container');
+  const glowLogo = document.querySelector('.glow-logo');
+  const heroContent = document.querySelector('.hero-content');
+  
+  let lastScrollY = -1;
+  
+  function updateScrollTransforms() {
+    const sY = window.scrollY;
+    if (sY === lastScrollY) {
+      requestAnimationFrame(updateScrollTransforms);
+      return;
+    }
+    lastScrollY = sY;
+    
+    // Only animate when Hero is visible on screen
+    if (sY <= window.innerHeight * 1.2) {
+      const threshold = window.innerHeight * 0.8;
+      const progress = Math.min(sY / threshold, 1.0);
+      
+      if (window.innerWidth > 768) {
+        if (heroVisualContainer) {
+          const scale = 1 - (progress * 0.08); // scales from 1.0 down to 0.92
+          const radius = 12 + (progress * 24); // border-radius from 12px to 36px
+          const translateY = progress * 60; // subtle scroll parallax
+          const opacity = 1 - (progress * 0.95);
+          
+          heroVisualContainer.style.transform = `scale(${scale}) translateY(${translateY}px)`;
+          heroVisualContainer.style.borderRadius = `${radius}px`;
+          heroVisualContainer.style.opacity = opacity;
+          heroVisualContainer.style.borderColor = `rgba(197, 160, 89, ${0.05 + progress * 0.15})`;
+        }
+        
+        if (glowLogo) {
+          const logoScale = 1 - (progress * 0.15); // shrinks slightly
+          const logoRotate = progress * 15; // rotate 15 degrees
+          glowLogo.style.transform = `scale(${logoScale}) rotate(${logoRotate}deg)`;
+        }
+        
+        if (heroContent) {
+          const textTranslateY = progress * -40;
+          const textOpacity = 1 - (progress * 1.15);
+          heroContent.style.transform = `translateY(${textTranslateY}px)`;
+          heroContent.style.opacity = Math.max(textOpacity, 0);
+        }
+      } else {
+        // Reset transforms on mobile screens to preserve static responsive layout
+        if (heroVisualContainer) {
+          heroVisualContainer.style.transform = '';
+          heroVisualContainer.style.borderRadius = '';
+          heroVisualContainer.style.opacity = '';
+          heroVisualContainer.style.borderColor = '';
+        }
+        if (glowLogo) {
+          glowLogo.style.transform = '';
+        }
+        if (heroContent) {
+          heroContent.style.transform = '';
+          heroContent.style.opacity = '';
+        }
+      }
+    }
+    
+    requestAnimationFrame(updateScrollTransforms);
+  }
+  
+  requestAnimationFrame(updateScrollTransforms);
 
 });
