@@ -650,8 +650,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 
 .project-card {
@@ -807,6 +807,46 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes rings-float {
   0% { transform: translateY(0); }
   100% { transform: translateY(-7px); }
+}
+
+/* Project 3 preview (Purple Makeup - Purple Gem Theme) */
+.p3-preview {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.05) 0%, rgba(0,0,0,0) 100%);
+}
+
+.p3-preview .floating-diamond {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid #A855F7;
+  background: rgba(168, 85, 247, 0.04);
+  transform: rotate(45deg);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.20);
+  animation: diamond-pulse 3s ease-in-out infinite alternate;
+  z-index: 2;
+}
+
+.p3-preview .grid-lines {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 20px 20px;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+@keyframes diamond-pulse {
+  0% {
+    transform: rotate(45deg) scale(0.9) translateY(0);
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.15);
+  }
+  100% {
+    transform: rotate(45deg) scale(1.03) translateY(-5px);
+    box-shadow: 0 0 25px rgba(168, 85, 247, 0.40);
+  }
 }
 
 .project-tag {
